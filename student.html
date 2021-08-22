@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Quản lý sinh viên</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
+        crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="new.css">
+    <script src="new.js"></script> -->
+    <!-- CSS only -->
+</head>
+
+<body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="index.html">Quản lý SV</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Tìm kiếm..." aria-label="Search for..."
+                    aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
+                        class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Cài đặt</a></li>
+                    <li><a class="dropdown-item" href="#!">Hoạt động đăng nhập</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#!">Đăng xuất</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <!-- <div class="sb-sidenav-menu-heading">Admin</div> -->
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Trang chủ
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Thống kê</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+                            aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Sinh viên
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" >
+                            <nav class="sb-sidenav-menu-nested nav accordion" >
+                                <a class="nav-link collapsed" href="student.html" >
+                                    Danh sách sinh viên
+                                </a>
+                                <a class="nav-link collapsed" href="student-learn-again.html" >
+                                    Sinh viên học lại
+                                </a>
+                                <a class="nav-link collapsed" href="student-retest.html" >
+                                    Sinh viên thi lại
+                                </a>
+                                <a class="nav-link collapsed" href="student-up-class.html" >
+                                    Sinh viên lên lớp
+                                </a>
+                                <a class="nav-link collapsed" href="student-scholarship.html" >
+                                    Sinh viên học bổng
+                                </a>
+                            </nav>
+                        </div>
+                        <a class="nav-link" href="lecturer.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Giảng viên
+                        </a>
+                        <a class="nav-link" href="subject.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Môn học
+                        </a>
+                        <a class="nav-link" href="class.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Lớp học
+                        </a>
+                        <a class="nav-link" href="point.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Điểm
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Giao diện</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Chế độ
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="layout-static.html">Tối</a>
+                                <a class="nav-link" href="layout-sidenav-light.html">Sáng</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Đăng nhập với tư cách</div>
+                    Admin
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4 mb-4">Quản lý sinh viên</h1>
+                    <form action="" >
+                        <select class="form-select-class form-select me-1" aria-label="Default select example" >
+                            <option selected>Khóa</option>
+                            <option selected>AT14</option>
+                            <option value="1">AT15</option>
+                            <option value="2">CT1</option>
+                            <option value="3">DT1</option>
+                        </select>
+                        <select class="form-select-subject form-select mb-2 " aria-label="Default select example">
+                            <option selected>Chọn lớp học</option>
+                            <option value="1">AT14D</option>
+                            <option value="2">AT14A</option>
+                            <option value="3">AT14C</option>
+                        </select>
+                        <button type="button" class="btn btn-primary p-2 mb-4">
+                            <i class="fas fa-search"></i>
+                            Tìm kiếm
+                        </button>
+                        <div class="d-flex">
+                            <button type="button" class="btn btn-warning mb-4 p-2 me-1">Xuất excel</button>
+                            <button type="button" class="btn btn-danger mb-4 p-2">PDF</button>
+                            <button type="button" class="btn btn-success mb-4 ml-auto" data-bs-toggle="modal"
+                                data-bs-target="#addModal">
+                                <i class="fas fa-plus-circle"></i>
+                                Thêm
+                            </button>
+                    </form>
+                </div>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-table me-1"></i>
+                        Thống kê điểm sinh viên
+                    </div>
+                    <div class="card-body">
+                        <table id="datatablesSimple">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã sinh viên</th>
+                                    <th>Họ sinh viên</th>
+                                    <th>Tên sinh viên</th>
+                                    <th>Giới tính</th>
+                                    <th>Ngày sinh</th>
+                                    <th>Quê quán</th>
+                                    <th>Lớp</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã sinh viên</th>
+                                    <th>Họ sinh viên</th>
+                                    <th>Tên sinh viên</th>
+                                    <th>Lớp</th>
+                                    <th>Điểm quá trình</th>
+                                    <th>Điểm giữa kì</th>
+                                    <th>Điểm cuối kì</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>AT140413</td>
+                                    <td>Cao Trung</td>
+                                    <td>Đức</td>
+                                    <td>Nam</td>
+                                    <td>14/02/1999</td>
+                                    <td>Nam Định</td>
+                                    <td>AT14D</td>
+                                    <td>
+                                        <a type="button" class="icon-edit ml-auto" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a type="button" class="icon-delete" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                            <i class="fas fa-trash"></i></a>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>AT140413</td>
+                                    <td>Nguyễn Văn</td>
+                                    <td>An</td>
+                                    <td>Nam</td>
+                                    <td>14/02/1999</td>
+                                    <td>Nam Định</td>
+                                    <td>AT14D</td>
+                                    <td>
+                                        <a type="button" class="icon-edit ml-auto" data-bs-toggle="modal" data-bs-target="#editModal">
+                                            <i class="fas fa-pencil-alt"></i>
+                                        </a>
+                                        <a type="button" class="icon-delete" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                            <i class="fas fa-trash"></i></a>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </div>
+        </main>
+
+        <!-- Thêm-->
+        <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Thêm sinh viên</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body px-4">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Họ sinh viên</label>
+                                    <input type="text" class="form-control" required >
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Tên sinh viên</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Mã sinh viên</label>
+                                    <input type="text" class="form-control" required >
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Giới tính</label>
+                                    <select id="inputState" class="form-select">
+                                        <option selected>Chọn</option>
+                                        <option>Nam</option>
+                                        <option>Nữ</option>
+                                      </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Ngày sinh</label>
+                                    <input type="date" class="form-control" required >
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Quê quán</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Lớp</label>
+                                    <input type="text" class="form-control" required >
+                                </div>
+                            </div>
+                            <div class="col">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-success">Thêm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Sửa -->
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editModalLabel">Sửa thông tin sinh viên</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body px-4">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Họ sinh viên</label>
+                                    <input type="text" class="form-control" required >
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Tên sinh viên</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Mã sinh viên</label>
+                                    <input type="text" class="form-control" required >
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Giới tính</label>
+                                    <select id="inputState" class="form-select">
+                                        <option selected>Chọn</option>
+                                        <option>Nam</option>
+                                        <option>Nữ</option>
+                                      </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Ngày sinh</label>
+                                    <input type="date" class="form-control" required >
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Quê quán</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label>Lớp</label>
+                                    <input type="text" class="form-control" required >
+                                </div>
+                            </div>
+                            <div class="col">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-primary">Sửa</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- xóa -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deleteModalLabel">Xóa column</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Bạn có chắc chắn xóa không ?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                            <button type="button" class="btn btn-danger">Xóa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <footer class="py-4 bg-light mt-auto">
+            <div class="container-fluid px-4">
+                <div class="d-flex align-items-center justify-content-between small">
+                    <div class="text-muted">Copyright &copy;Cao Trung Đức 2021</div>
+                    <div>
+                        <a href="#">anhcomql123@gmail.com</a>
+                        &middot;
+                        <a href="https://github.com/CaoTrungDuc">https://github.com/CaoTrungDuc</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+</body>
+
+</html>
